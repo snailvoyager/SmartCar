@@ -124,13 +124,13 @@ public class JoystickView extends View {
                 
                 bgPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
                 bgPaint.setColor(Color.GRAY);
-                bgPaint.setAlpha(70);
+                bgPaint.setAlpha(100);
                 bgPaint.setStrokeWidth(1);
                 bgPaint.setStyle(Paint.Style.FILL_AND_STROKE);
 
                 handlePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
                 handlePaint.setColor(Color.DKGRAY);
-                handlePaint.setAlpha(70);
+                handlePaint.setAlpha(100);
                 handlePaint.setStrokeWidth(1);
                 handlePaint.setStyle(Paint.Style.FILL_AND_STROKE);
 

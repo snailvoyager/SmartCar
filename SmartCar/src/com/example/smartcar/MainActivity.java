@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.*;
 import android.app.*;
 import android.content.pm.*;
+import android.graphics.PorterDuff.*;
 import android.net.*;
 import android.os.*;
 import android.view.*;
@@ -14,10 +15,8 @@ public class MainActivity extends Activity implements OnClickListener{
 	
 	private BackPressCloseHandler backPressCloseHandler;
 	
-	private String videoURL = "rtsp://192.168.219.105:8554/test";
+	private String videoURL;
 	
-	private String serverIP;
-	private int serverPort;
 	private Socket socket;
 	private OutputStream outs;
 	public logger logger;
@@ -42,10 +41,10 @@ public class MainActivity extends Activity implements OnClickListener{
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		
 		socket = SingletonSocket.getSocket();
+		videoURL = "rtsp://" + socket.getInetAddress().getHostAddress() + ":8554/test";
 		try {
 			outs = socket.getOutputStream();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -223,7 +222,7 @@ public class MainActivity extends Activity implements OnClickListener{
 				logger.log("Fail to send");
 				e.printStackTrace();
 			}
-		};
+		}
 	};
 
 	private JoystickMovedListener _listenerRight = new JoystickMovedListener() {
@@ -268,7 +267,7 @@ public class MainActivity extends Activity implements OnClickListener{
 				logger.log("Fail to send");
 				e.printStackTrace();
 			}
-		};
+		}
 	};
 
 	@Override
