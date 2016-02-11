@@ -4,14 +4,14 @@ import java.io.*;
 import java.net.*;
 import android.app.*;
 import android.content.pm.*;
-import android.graphics.PorterDuff.*;
 import android.net.*;
 import android.os.*;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
+import android.widget.RadioGroup.*;
 
-public class MainActivity extends Activity implements OnClickListener{
+public class MainActivity extends Activity implements OnClickListener, OnCheckedChangeListener{
 	
 	private BackPressCloseHandler backPressCloseHandler;
 	
@@ -29,14 +29,13 @@ public class MainActivity extends Activity implements OnClickListener{
 	private ImageView buttonDown;
 	private ImageView buttonLeft;
 	private ImageView buttonRight;
-	private ImageView pwm1;
-	private ImageView pwm2;
-	private ImageView pwm3;
-	private ImageView pwm4;
+
+	private RadioGroup radioGroup;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_main);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		
@@ -75,15 +74,8 @@ public class MainActivity extends Activity implements OnClickListener{
 		buttonLeft.setOnClickListener(this);
 		buttonRight.setOnClickListener(this);
 		
-		pwm1 = (ImageView)this.findViewById(R.id.pwm1);
-		pwm2 = (ImageView)this.findViewById(R.id.pwm2);
-		pwm3 = (ImageView)this.findViewById(R.id.pwm3);
-		pwm4 = (ImageView)this.findViewById(R.id.pwm4);
-		
-		pwm1.setOnClickListener(this);
-		pwm2.setOnClickListener(this);
-		pwm3.setOnClickListener(this);
-		pwm4.setOnClickListener(this);
+		radioGroup = (RadioGroup)this.findViewById(R.id.radioGroup);
+		radioGroup.setOnCheckedChangeListener(this);
 		
 		backPressCloseHandler = new BackPressCloseHandler(this);
 	}
@@ -134,8 +126,12 @@ public class MainActivity extends Activity implements OnClickListener{
 				e.printStackTrace();
 			}
 		}
-		
-		if(v == pwm1){
+	};
+	
+	@Override
+	public void onCheckedChanged(RadioGroup group, int checkedId) {
+		switch(checkedId){
+		case R.id.pwm1Radio:
 			sndOpkey = "pwmPower1";
 			try{
 				outs.write(sndOpkey.getBytes("UTF-8"));
@@ -144,9 +140,8 @@ public class MainActivity extends Activity implements OnClickListener{
 				logger.log("Fail to send");
 				e.printStackTrace();
 			}
-		}
-		
-		if(v == pwm2){
+			break;
+		case R.id.pwm2Radio:
 			sndOpkey = "pwmPower2";
 			try{
 				outs.write(sndOpkey.getBytes("UTF-8"));
@@ -155,9 +150,8 @@ public class MainActivity extends Activity implements OnClickListener{
 				logger.log("Fail to send");
 				e.printStackTrace();
 			}
-		}
-		
-		if(v == pwm3){
+			break;
+		case R.id.pwm3Radio:
 			sndOpkey = "pwmPower3";
 			try{
 				outs.write(sndOpkey.getBytes("UTF-8"));
@@ -166,9 +160,8 @@ public class MainActivity extends Activity implements OnClickListener{
 				logger.log("Fail to send");
 				e.printStackTrace();
 			}
-		}
-		
-		if(v == pwm4){
+			break;
+		case R.id.pwm4Radio:
 			sndOpkey = "pwmPower4";
 			try{
 				outs.write(sndOpkey.getBytes("UTF-8"));
@@ -177,6 +170,7 @@ public class MainActivity extends Activity implements OnClickListener{
 				logger.log("Fail to send");
 				e.printStackTrace();
 			}
+			break;
 		}
 	};
 	

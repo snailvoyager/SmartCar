@@ -19,35 +19,45 @@
             android:layout_weight="0.17"
             android:orientation="vertical" >
 
-            <ImageView
-                android:id="@+id/pwm1"
-                android:src="@drawable/pwm1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            
-            <ImageView
-                android:id="@+id/pwm2"
-                android:src="@drawable/pwm2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" 
-                android:layout_marginLeft="15dp"
-                android:layout_toRightOf="@id/pwm1"/>
-            
-            <ImageView
-                android:id="@+id/pwm3"
-                android:src="@drawable/pwm3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp" 
-                android:layout_toRightOf="@id/pwm2"/>
-            
-            <ImageView
-                android:id="@+id/pwm4"
-                android:src="@drawable/pwm4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" 
-                android:layout_marginLeft="15dp"
-                android:layout_toRightOf="@id/pwm3"/>
+       		<RadioGroup 
+       		    android:id="@+id/radioGroup"
+       		    android:layout_width="fill_parent"
+       		    android:layout_height="fill_parent"
+       		    android:orientation="horizontal"
+       		    android:checkedButton="@+id/pwm1Radio">
+       		    <RadioButton 
+       		        android:id="@+id/pwm1Radio"
+       		        android:layout_width="wrap_content"
+       		        android:layout_height="wrap_content"
+       		        android:layout_marginLeft="15dp"
+       		        android:layout_marginTop="5dp"
+       		        android:button="@drawable/pwm1_selector" />
+       		    
+       		    <RadioButton 
+       		        android:id="@+id/pwm2Radio"
+       		        android:layout_width="wrap_content"
+       		        android:layout_height="wrap_content"
+       		        android:layout_marginLeft="15dp"
+       		        android:layout_marginTop="5dp"
+       		        android:button="@drawable/pwm2_selector"/>
+       		    
+       		    <RadioButton 
+       		        android:id="@+id/pwm3Radio"
+       		        android:layout_width="wrap_content"
+       		        android:layout_height="wrap_content"
+       		        android:layout_marginLeft="15dp"
+       		        android:layout_marginTop="5dp"
+       		        android:button="@drawable/pwm3_selector"/>
+       		    
+       		    <RadioButton 
+       		        android:id="@+id/pwm4Radio"
+       		        android:layout_width="wrap_content"
+       		        android:layout_height="wrap_content"
+       		        android:layout_marginLeft="15dp"
+       		        android:layout_marginTop="5dp"
+       		        android:button="@drawable/pwm4_selector"/>
+       		    
+       		</RadioGroup>     
             
             <TextView 
                 android:id="@+id/textViewStatus"
@@ -55,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="15sp" 
                 android:background="#F44336"
-                android:layout_alignParentRight="true"/>"
+                android:layout_alignParentRight="true"/>
             
         </RelativeLayout>
 
@@ -94,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" 
             android:layout_alignTop="@+id/buttonUp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="25dp"
             android:layout_toRightOf="@id/buttonUp"/>
 
         <ImageView
@@ -102,7 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/buttonUp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="25dp"
             android:layout_toLeftOf="@+id/buttonUp"
             android:src="@drawable/camleft"
             android:background="@drawable/background" />
